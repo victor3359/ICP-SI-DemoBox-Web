@@ -1,0 +1,533 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+
+
+<!-- Mirrored from demo.lorvent.com/demo_admire/admire_html/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Sep 2017 07:00:22 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <title>Room</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link style="width:24px;height:33px;" rel="shortcut icon" href="img_new/hok_house_nb.png"/>
+
+    <!--global styles-->
+    <link type="text/css" rel="stylesheet" href="css_new/stylesheet_rkcharts.css"/>
+    <link type="text/css" rel="stylesheet" href="css_new/stylesheet_p_notify.css"/>
+    <link type="text/css" rel="stylesheet" href="css_new/stylesheet_izitoast.css"/>
+    <link type="text/css" rel="stylesheet" href="css_new/stylesheet_adcharts.css"/>
+    <link type="text/css" rel="stylesheet" href="css_new/stylesheet_buttons.css">
+    <link type="text/css" rel="stylesheet" href="css_new/stylesheet_index.css">
+    <link type="text/css" rel="stylesheet" href="css_new/bootstrap-slider.min.css">
+    <!-- end of global styles-->
+
+
+    <link type="text/css" rel="stylesheet" href="#" id="skin_change"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/bootstrap-slider.min.js"></script>
+    <script src="javascripts/pages/HokSocket.js"></script>
+    <style>
+        #ex1Slider .slider-selection {
+            background: #BABABA;
+        }
+    </style>
+</head>
+
+<body class="body">
+<div class="preloader" style=" position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  backface-visibility: hidden;
+  background: #ffffff;">
+    <div class="preloader_img" style="width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 48%;
+  top: 48%;
+  background-position: center;
+z-index: 999999">
+        <img src="img/loader.gif.pagespeed.ce.6uBJi4bcCR.gif" style=" width: 40px;" alt="loading...">
+    </div>
+</div>
+<div class="bg-dark" id="wrap">
+    <div id="top">
+        <!-- .navbar -->
+        <nav class="navbar navbar-static-top">
+            <div class="container-fluid m-0">
+                <a class="navbar-brand float-left text-center" href="/">
+                    <h4 class="text-white"><img src="img_new/hok_house_nb.png" class="admin_img" alt="logo"> 房間情境</h4>
+                </a>
+            </div>
+
+            <!-- /.container-fluid --> </nav>
+        <!-- /.navbar -->
+        <!-- /.head --> </div>
+    <!-- /#top -->
+    <div class="wrapper">
+        <!-- /#left -->
+        <div id="content" class="bg-container">
+            <header class="head">
+                <div class="main-bar">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="m-t-5">
+                                <i class="fa fa-home"></i>
+                                Room
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="outer">
+                <div class="inner bg-container">
+                    <!--top section widgets-->
+                    <div class="row widget_countup">
+                        <div class="col-12 col-sm-6 col-xl-3">
+                            <div id="top_widget1">
+                                <div class="front">
+                                    <div class="bg-primary p-d-15 b_r_5">
+                                        <div class="float-right m-t-5">
+                                            <i class="fa fa-battery-3"></i>
+                                        </div>
+                                        <div class="user_font">總用電量</div>
+                                        <div id="widget_countup1"></div>
+                                        <div class="tag-white">
+                                        </div>
+                                        <div class="previous_font">度</div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div class="bg-white b_r_5 section_border">
+                                        <div class="p-t-l-r-15">
+                                            <div class="float-right m-t-5">
+                                                <i class="fa fa-battery-3 text-primary"></i>
+                                            </div>
+                                            <div id="widget_countup12"></div>
+                                            <div>kWh</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <span id="visitsspark-chart"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-xl-3 media_max_573">
+                            <div id="top_widget2">
+                                <div class="front">
+                                    <div class="bg-success p-d-15 b_r_5">
+                                        <div class="float-right m-t-5">
+                                            <i class="fa fa-flash"></i>
+                                        </div>
+                                        <div class="user_font">電壓</div>
+                                        <div id="widget_countup2"></div>
+                                        <div class="tag-white">
+                                        </div>
+                                        <div class="previous_font">伏特</div>
+                                    </div>
+                                </div>
+
+                                <div class="back">
+                                    <div class="bg-white b_r_5 section_border">
+                                        <div class="p-t-l-r-15">
+                                            <div class="float-right m-t-5 text-success">
+                                                <i class="iconPM25"></i>
+                                            </div>
+                                            <div id="widget_countup22"></div>
+                                            <div>Volt</div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <span id="V_chart"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-xl-3 media_max_573">
+                            <div id="top_widget3">
+                                <div class="front">
+                                    <div class="bg-success p-d-15 b_r_5">
+                                        <div class="float-right m-t-5">
+                                            <i class="fa fa-flash"></i>
+                                        </div>
+                                        <div class="user_font">電流</div>
+                                        <div id="widget_countup3"></div>
+                                        <div class="tag-white">
+                                        </div>
+                                        <div class="previous_font">豪安培</div>
+                                    </div>
+                                </div>
+
+                                <div class="back">
+                                    <div class="bg-white b_r_5 section_border">
+                                        <div class="p-t-l-r-15">
+                                            <div class="float-right m-t-5 text-success">
+                                                <i class="iconPM25"></i>
+                                            </div>
+                                            <div id="widget_countup32"></div>
+                                            <div>Ampere</div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <span id="I_chart"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-xl-3 media_max_1199">
+                            <div id="top_widget4">
+                                <div class="front">
+                                    <div class="bg-danger p-d-15 b_r_5">
+                                        <div class="float-right m-t-5">
+                                            <i class="fa fa-line-chart"></i>
+                                        </div>
+                                        <div class="user_font">即時功率</div>
+                                        <div id="widget_countup4"></div>
+                                        <div class="tag-white">
+                                            <span id="percent_count4"></span>
+                                        </div>
+                                        <div class="previous_font">瓦特 </div>
+                                    </div>
+                                </div>
+
+                                <div class="back">
+                                    <div class="bg-white section_border b_r_5">
+                                        <div class="p-t-l-r-15">
+                                            <div class="float-right m-t-5 text-danger">
+                                                <i class="fa fa-line-chart"></i>
+                                            </div>
+
+                                            <div id="widget_countup42"></div>
+                                            <div>Watt</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <span id="rating"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row widget_countup m-t-35">
+                        <div class="col-12 col-sm-6 col-xl-4">
+
+                            <div id="top_widget5">
+                                <div class="front">
+                                    <div class="bg-primary p-d-15 b_r_5">
+                                        <div class="float-right m-t-5">
+                                            <i class="iconCO2"></i>
+                                        </div>
+                                        <div class="user_font">CO2</div>
+                                        <div id="widget_countup5"></div>
+                                        <div class="tag-white">
+                                        </div>
+                                        <div class="previous_font">ppm</div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div class="bg-white b_r_5 section_border">
+                                        <div class="p-t-l-r-15">
+                                            <div class="float-right m-t-5">
+                                                <i class="iconCO2 text-primary"></i>
+                                            </div>
+                                            <div id="widget_countup52"></div>
+                                            <div>ppm</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <span id="CO2_chart"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-xl-4 media_max_1199">
+                            <div id="top_widget7">
+                                <div class="front">
+                                    <div class="bg-warning p-d-15 b_r_5">
+                                        <div class="float-right m-t-5">
+                                            <i class="iconRH"></i>
+                                        </div>
+                                        <div class="user_font">濕度</div>
+                                        <div id="widget_countup7"></div>
+                                        <div class="tag-white ">
+                                            <span id="percent_count7"></span>
+                                        </div>
+                                        <div class="previous_font">%</div>
+                                    </div>
+                                </div>
+
+                                <div class="back">
+                                    <div class="bg-white b_r_5 section_border">
+                                        <div class="p-t-l-r-15">
+                                            <div class="float-right m-t-5 text-warning">
+                                                <i class="iconRH"></i>
+                                            </div>
+                                            <div id="widget_countup72"></div>
+                                            <div>%</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <span id="RH_chart"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-sm-6 col-xl-4 media_max_1199">
+                            <div id="top_widget8">
+                                <div class="front">
+                                    <div class="bg-danger p-d-15 b_r_5">
+                                        <div class="float-right m-t-5">
+                                            <i class="iconTEMP"></i>
+                                        </div>
+                                        <div class="user_font">溫度</div>
+                                        <div id="widget_countup8"></div>
+                                        <div class="tag-white">
+                                            <span id="percent_count8"></span>
+                                        </div>
+                                        <div class="previous_font">℃</div>
+                                    </div>
+                                </div>
+
+                                <div class="back">
+                                    <div class="bg-white section_border b_r_5">
+                                        <div class="p-t-l-r-15">
+                                            <div class="float-right m-t-5 text-danger">
+                                                <i class="iconTEMP"></i>
+                                            </div>
+
+                                            <div id="widget_countup82"></div>
+                                            <div>℃</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <span id="TEMP_chart"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row m-t-40">
+                        <div class="col-xl-12">
+                            <div class="bg-white section_border circliful_section">
+                                <div class="tab-content text-center">
+                                    <div class="tab-pane active" id="chart_realtime">
+                                        <div class="card">
+                                            <div class="card-header bg-white">
+                                                <span class="card-title">動態即時資訊</span>
+                                            </div>
+                                            <div class="card-block">
+                                                <div class="mb-md m-t-15" style="width:100%;height:500px;" id="rt_chart"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="chart_status">
+                                        <div class="card">
+                                            <div class="card-header bg-white">
+                                                <span class="card-title">耗電功率分析</span>
+                                            </div>
+                                            <div class="card-block">
+                                                <!--<div class="mb-md m-t-15" id="chart_status"></div>-->
+                                                <div id="container" class="mb-md m-t-15" style="width:100%; height: 500px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="chart_trend">
+                                        <div class="card">
+                                            <div class="card-header bg-white">
+                                                <span class="card-title">每日用電分析</span>
+                                            </div>
+                                            <div class="card-block m-t-35">
+                                                <div class="mb-md m-t-15" style="width:100%;height:465px;" id="chart_trend2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="nav nav-tabs m-t-35 text-center">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#chart_realtime" data-toggle="tab">
+                                            <div><i class="fa fa-bar-chart-o"></i></div>
+                                            <span>動態即時資訊</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" id="themify_icon">
+                                        <a class="nav-link" href="#chart_status" data-toggle="tab">
+                                            <div><i class="fa fa-bar-chart-o"></i></div>
+                                            <span>功耗資訊分析</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item" id="ionicons_tab">
+                                        <a class="nav-link" href="#chart_trend" data-toggle="tab">
+                                            <div><i class="fa fa-area-chart"></i></div>
+                                            <span>每日用電分析</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-5 m-t-35">
+                            <div class="social-counter text-center">
+                                <ul class="m-b-0">
+                                    <li class="facetofinger">
+                                        <div class="row">
+                                            <div class="col-4 text-right social_icon_top"><span class="social-icon text-center" id="Situation_Switch"><i class="fa fa-lightbulb-o"></i></span></div>
+                                            <div class="col-8 text-left social_fa_top row">
+                                                <div class="col-3">
+                                                    <button class="btn btn-warning button-rounded" id="SituationOutside">外出</button>
+                                                </div>
+                                                <div class="col-3">
+                                                    <button class="btn btn-primary button-rounded" id="SituationNormal">一般</button>
+                                                </div>
+                                                <div class="col-3">
+                                                    <button class="btn btn-info button-rounded" id="SituationPlay">娛樂</button>
+                                                </div>
+                                                <div class="col-3">
+                                                    <button class="btn btn-success button-rounded" id="SituationSleep">睡眠</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="facebook">
+                                        <div class="row">
+                                            <div class="col-4 text-right social_icon_top"><span class="social-icon text-center" id="AC_Light_Switch"><i class="fa fa-lightbulb-o"></i></span></div>
+                                            <div class="col-8 text-left social_fa_top"><span class="count">Dimming Light：<span id="AC_Light_State">Loading...</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="twitter">
+                                        <div class="row">
+                                            <div class="col-4 text-right social_icon_top"><span class="social-icon text-center" id="DC_Light_Switch"><i class="fa fa-lightbulb-o"></i></span></div>
+                                            <div class="col-8 text-left social_fa_top"><span class="count">Batten Light：<span id="DC_Light_State">Loading...</span></span></div>
+                                        </div>
+                                    </li>
+                                    <li class="google">
+                                        <div class="row">
+                                            <div class="col-4 text-right social_icon_top"><span class="social-icon text-center" id="TV_Switch"><i class="fa fa-lightbulb-o"></i></span></div>
+                                            <div class="col-8 text-left social_fa_top"><span class="count">Television：<span id="TV_State">Loading...</span></span></div>
+                                        </div>
+                                    </li>
+                                    <li class="facetoface">
+                                        <div class="row">
+                                            <div class="col-4 text-right social_icon_top"><span class="social-icon text-center" id="Air_Switch"><i class="fa fa-lightbulb-o"></i></span></div>
+                                            <div class="col-8 text-left social_fa_top"><span class="count">Air Conditioner：<span id="Air_State">Loading...</span></span></div>
+                                        </div>
+                                    </li>
+                                    <li class="linkedin">
+                                        <div class="row">
+                                            <div class="col-4 text-right social_icon_top"><span class="social-icon text-center"><i class="fa fa-power-off"></i></span></div>
+                                            <div class="col-8 text-left social_fa_top row">
+                                                <div class="col-6">
+                                                    <button class="btn btn-info button-rounded" id="All_On">ON</button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn btn-danger button-rounded" id="All_Off">OFF</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#content -->
+        </div>
+    </div>
+</div>
+<!-- /#wrap -->
+<!-- global scripts-->
+<script type="text/javascript" src="js/components.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<!--end of global scripts-->
+<!--  plugin scripts -->
+<script type="text/javascript" src="vendors/countUp.js/js/countUp.min.js"></script>
+<script type="text/javascript" src="vendors/flip/js/jquery.flip.min.js"></script>
+<script type="text/javascript" src="js/pluginjs/jquery.sparkline.js"></script>
+<script type="text/javascript" src="vendors/chartist/js/chartist.min.js"></script>
+<script type="text/javascript" src="js/pluginjs/chartist-tooltip.js"></script>
+<script type="text/javascript" src="vendors/swiper/js/swiper.min.js"></script>
+<script type="text/javascript" src="vendors/circliful/js/jquery.circliful.min.js"></script>
+<script type="text/javascript" src="vendors/flotchart/js/jquery.flot.js"></script>
+<script type="text/javascript" src="vendors/flotchart/js/jquery.flot.resize.js"></script>
+<!--end of plugin scripts-->
+
+<script src="javascripts/amcharts.js"></script>
+<script src="javascripts/amstock.js"></script>
+<script src="javascripts/serial.js"></script>
+<script src="javascripts/highcharts.js"></script>
+<script src="javascripts/exporting.js"></script>
+<link rel="stylesheet" href="css_new/export.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="javascripts/pages/room.js"></script>
+
+<!-- plugin script -->
+<script type="text/javascript" src="vendors/raphael/js/raphael-min.js.pagespeed.jm.mdymR_0MgC.js"></script>
+<script type="text/javascript" src="vendors/justgage/js/justgage.js.pagespeed.jm.AXTAmfTJl6.js"></script>
+<script type="text/javascript" src="vendors/d3/js/d3.min.js.pagespeed.jm.hcZ4wO0QRk.js"></script>
+<script type="text/javascript" src="vendors/c3/js/c3.min.js.pagespeed.ce.nEKX37kL43.js"></script>
+
+
+
+<!-- Plugin scripts -->
+<script type="text/javascript" src="vendors/izitoast/js/iziToast.min.js.pagespeed.ce.yubeP2Xtg-.js"></script>
+<script type="text/javascript" src="vendors/raphael/js/raphael-min.js.pagespeed.jm.mdymR_0MgC.js"></script>
+<script type="text/javascript" src="vendors/justgage/js/justgage.js.pagespeed.jm.AXTAmfTJl6.js"></script>
+<script type="text/javascript" src="vendors/d3/js/d3.min.js.pagespeed.jm.hcZ4wO0QRk.js"></script>
+<script type="text/javascript" src="vendors/c3/js/c3.min.js.pagespeed.ce.nEKX37kL43.js"></script>
+
+
+<script src="vendors/javascript_p_notify.js"></script>
+<script>eval(mod_pagespeed_PgBWTwAB3I);</script>
+<script>eval(mod_pagespeed_37O3ld5zoQ);</script>
+<script>eval(mod_pagespeed_ZzmY5mTsAs);</script>
+<script>eval(mod_pagespeed_jVUCZO33_F);</script>
+<script>eval(mod_pagespeed_IZ2qoLVjJy);</script>
+<script>eval(mod_pagespeed_5QWOUcvZEj);</script>
+<script>eval(mod_pagespeed_vHxvsCIMRH);</script>
+<script>eval(mod_pagespeed_BityH3aJ10);</script>
+<script>eval(mod_pagespeed_WX_WC_ZJ7M);</script>
+<script>eval(mod_pagespeed_0hM1ZEEq1u);</script>
+<!--End of plugin scripts-->
+
+<script type="text/javascript" src="js/pages/p_notify.js.pagespeed.jm.E2cU5JtMgK.js"></script>
+
+</body>
+
+<!-- Mirrored from demo.lorvent.com/demo_admire/admire_html/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Sep 2017 07:01:26 GMT -->
+</html>
