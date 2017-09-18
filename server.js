@@ -154,7 +154,7 @@ function Init(){
             for (var i = 0; i < objects.length; i++) {
                 data.push({
                     kWh: objects[i]['data']['kWh'],
-                    TIME: date.format(objects[i]['data']['sysdatetime'], 'MM-DD')
+                    TIME: date.format(objects[i]['data']['sysdatetime'], 'MM-DD HH:mm')
                 });
             }
             data.sort(function (a, b) {
@@ -294,8 +294,8 @@ client.on('connect', function () {
 var socket = io.listen(10000);
 socket.sockets.on('connection', function (socket) {
     console.log('Socket Client Connected.');
-    socket.on('Situation', function(data){
-        client.publish('demo/home/1709181907/situation', parseInt(data));
+    socket.on('roomSituation', function(data){
+        client.publish('demo/home/1709181907/situation', data);
     });
     socket.on('roomAL', function(){
         if(oldACLight / 2000 > 4) oldACLight = 0;
