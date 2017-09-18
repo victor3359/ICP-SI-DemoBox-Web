@@ -117,7 +117,7 @@ $(document).ready(function() {
     socket.on(room +'_init', function (data) {
         powerdata.push(data['KWH']);
         voltagedata.push(data['V']);
-        amperedata.push(data['A']);
+        amperedata.push(data['I']);
         powerdata_c.push(data['KW'] * 1000);
         CO2data.push(data['CO2']);
         RHdata.push(data['HR'] / 100);
@@ -263,7 +263,7 @@ $(document).ready(function() {
     socket.on(room +'_data', function (data) {
         powerdata.push(data['KWH']);
         voltagedata.push(data['V']);
-        amperedata.push(data['A']);
+        amperedata.push(data['I']);
         powerdata_c.push(data['KW'] * 1000);
         CO2data.push(data['CO2']);
         RHdata.push(data['HR'] / 100);

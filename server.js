@@ -330,7 +330,7 @@ socket.sockets.on('connection', function (socket) {
     socket.on('done', function (room) {
         Init(room);
         if(!oldInterval){
-            oldInterval = setInterval(function(){Update(room);}, 3000);
+            oldInterval = setInterval(function(){Update(room);}, 1000);
             oldchartInterval = setInterval(function(){UpdateChart(room);}, 60000);
             updateroom = room;
             console.log('First Done.');
