@@ -65,7 +65,7 @@ function Init(){
                     data: {$first: "$$ROOT"}
                 }
             },
-            {$sort: {datetime: -1}}, {$limit: 1000}
+            {$sort: {_id: -1}}, {$limit: 1000}
         ], {allowDiskUse: true}).toArray(function (mongoError, objects) {
             if (mongoError) throw mongoError;
             var realtimedata = [];
@@ -110,7 +110,7 @@ function Init(){
                     data: {$first: "$$ROOT"}
                 }
             },
-            {$sort: {datetime: -1}}
+            {$sort: {_id: -1}}
         ], {allowDiskUse: true}).toArray(function (mongoError, objects) {
             if (mongoError) throw mongoError;
             var data = [];
@@ -149,7 +149,7 @@ function Init(){
                     data: {$first: "$$ROOT"}
                 }
             },
-            {$sort: {datetime: -1}}, {$limit: 20}
+            {$sort: {_id: -1}}, {$limit: 20}
         ], {allowDiskUse: true}).toArray(function (mongoError, objects) {
             for (var i = 0; i < objects.length; i++) {
                 data.push({
@@ -163,7 +163,7 @@ function Init(){
             for (var i = 1; i < data.length; i++) {
                 tmp.push({
                     kWh: data[i]['kWh'] - data[i - 1]['kWh'],
-                    TIME: data[i - 1]['TIME']
+                    TIME: data[i]['TIME']
                 });
             }
             socket.emit('room_chart_trend', tmp);

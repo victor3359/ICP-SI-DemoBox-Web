@@ -14,7 +14,13 @@ $(document).ready(function() {
     var room = 'room';
 
     function controlalert(name, cmd){
-        iziToast.show({title:'Command',message:'Turn ' + cmd + ' the ' + name + '.' ,color:'#00cc99',position:'bottomRight'});
+        iziToast.show({
+            title:'Command',
+            message:'Turn ' + cmd + ' the ' + name + '.' ,
+            color:'#00cc99',
+            position:'bottomRight',
+            timeout: 500
+        });
     }
     socket.emit('done', room);
     //Controller Def Start
@@ -229,12 +235,12 @@ $(document).ready(function() {
                 data2: data[i]['I'],
                 data3: data[i]['V'],
                 data4: data[i]['CO2'],
-                data5: data[i]['HR'],
-                data6: data[i]['TEMP'],
+                data5: data[i]['HR'] / 100,
+                data6: data[i]['TEMP'] / 100,
                 data7: data[i]['AL'],
-                data8: data[i]['DL'],
-                data9: data[i]['TV'],
-                data10: data[i]['Air'],
+                data8: data[i]['DL'] * 10000,
+                data9: data[i]['TV'] * 10000,
+                data10: data[i]['Air'] * 10000,
                 date: data[i]['TIME']
             });
         }
@@ -247,12 +253,12 @@ $(document).ready(function() {
                 data2: data[i]['I'],
                 data3: data[i]['V'],
                 data4: data[i]['CO2'],
-                data5: data[i]['HR'],
-                data6: data[i]['TEMP'],
+                data5: data[i]['HR'] / 100,
+                data6: data[i]['TEMP'] / 100,
                 data7: data[i]['AL'],
-                data8: data[i]['DL'],
-                data9: data[i]['TV'],
-                data10: data[i]['Air'],
+                data8: data[i]['DL'] * 10000,
+                data9: data[i]['TV'] * 10000,
+                data10: data[i]['Air'] * 10000,
                 date: data[i]['TIME']
             });
         }
