@@ -266,7 +266,7 @@ function UpdateChart(){
 app.use('/', route);
 //Start the server
 app.listen(port);
-console.log('Big5-API is listening on port ' + port + "<-- Unused");
+//console.log('Big5-API is listening on port ' + port + "<-- Unused");
 var state = 'ON';
 function ONOFF(){
     if(state == 'ON'){
@@ -295,24 +295,30 @@ var socket = io.listen(10000);
 socket.sockets.on('connection', function (socket) {
     console.log('Socket Client Connected.');
     socket.on('roomSituation', function(data){
+        console.log('Situation ' + data);
         client.publish('demo/home/1709181907/situation', data);
     });
     socket.on('roomAL', function(){
         if(oldACLight / 2000 > 4) oldACLight = 0;
         else oldACLight += 2000;
+        console.log('Dimming Light Level' + oldACLight / 2000);
         client.publish('demo/home/1709181907/dimming', (oldACLight / 2000).toString());
         socket.emit('ALDone', oldACLight / 2000);
     });
     socket.on('roomDL', function(data){
+        console.log('BattenLighting ' + data);
         client.publish('demo/home/1709181907/BattenLighting', data);
     });
     socket.on('roomTV', function(data){
+        console.log('Television ' + data);
         client.publish('demo/home/1709181907/TV', data);
     });
     socket.on('roomAir', function(data){
+        console.log('Air Conditioner ' + data);
         client.publish('demo/home/1709181907/AC', data);
     });
     socket.on('roomDevices', function(data){
+        console.log('All Devices ' + data);
         if(data == 'ON'){
             oldACLight = 10000;
             client.publish('demo/home/1709181907/dimming', '5');
@@ -333,7 +339,7 @@ socket.sockets.on('connection', function (socket) {
             oldInterval = setInterval(function(){Update(room);}, 1000);
             oldchartInterval = setInterval(function(){UpdateChart(room);}, 60000);
             updateroom = room;
-            console.log('First Done.');
+            console.log('Done.');
         }
     });
 });
