@@ -26,26 +26,26 @@ $(document).ready(function() {
     //Controller Def Start
     $('#SituationNormal').click(function(){
         socket.emit(room + 'Situation', '2');
-        iziToast.show({title:'Converted to Normal Mode.' ,color:'#00cc99',position:'bottomRight'});
+        iziToast.show({title:'Converted to Normal Mode.' ,color:'#00cc99',position:'bottomRight',timeout:500});
     });
     $('#SituationOutside').click(function(){
         socket.emit(room + 'Situation', '1');
-        iziToast.show({title:'Converted to Out Mode.' ,color:'#00cc99',position:'bottomRight'});
+        iziToast.show({title:'Converted to Out Mode.' ,color:'#00cc99',position:'bottomRight',timeout:500});
     });
     $('#SituationPlay').click(function(){
         socket.emit(room + 'Situation', '3');
-        iziToast.show({title:'Converted to Amusement Mode.' ,color:'#00cc99',position:'bottomRight'});
+        iziToast.show({title:'Converted to Amusement Mode.' ,color:'#00cc99',position:'bottomRight',timeout:500});
     });
     $('#SituationSleep').click(function(){
         socket.emit(room + 'Situation', '4');
-        iziToast.show({title:'Converted to Sleep Mode.' ,color:'#00cc99',position:'bottomRight'});
+        iziToast.show({title:'Converted to Sleep Mode.' ,color:'#00cc99',position:'bottomRight',timeout:500});
     });
     $('#AC_Light_Switch').click(function () {
         socket.emit(room + 'AL', 'ON');
         //iziToast.show({title:'Dimming Light Status Changed.' ,color:'#00cc99',position:'bottomRight'});
     });
     socket.on('ALDone', function (data) {
-        iziToast.show({title:'Dimming Light Status Changed to Level '+data+'.' ,color:'#00cc99',position:'bottomRight'});
+        iziToast.show({title:'Dimming Light Status Changed to Level '+ data +'.' ,color:'#00cc99',position:'bottomRight',timeout:500});
     });
     $('#DC_Light_Switch').click(function () {
         if(getText('DC_Light_State') == 'Off'){
