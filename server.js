@@ -299,11 +299,13 @@ socket.sockets.on('connection', function (socket) {
         client.publish('demo/home/1709181907/situation', data);
     });
     socket.on('roomAL', function(){
-        if(oldACLight / 2000 > 4) oldACLight = 0;
-        else oldACLight += 2000;
-        console.log('Dimming Light Level' + oldACLight / 2000);
-        client.publish('demo/home/1709181907/dimming', (oldACLight / 2000).toString());
-        socket.emit('ALDone', oldACLight / 2000);
+        var Light = oldACLight - 7000;
+        var level = 500;
+        if(Light / level > 4) oldACLight = 7000;
+        else oldACLight += level;
+        console.log('Dimming Light Level' + Light / level);
+        client.publish('demo/home/1709181907/dimming', (Light / level).toString());
+        socket.emit('ALDone', Light / level);
     });
     socket.on('roomDL', function(data){
         console.log('BattenLighting ' + data);
@@ -320,13 +322,13 @@ socket.sockets.on('connection', function (socket) {
     socket.on('roomDevices', function(data){
         console.log('All Devices ' + data);
         if(data == 'ON'){
-            oldACLight = 10000;
+            oldACLight = 9500;
             client.publish('demo/home/1709181907/dimming', '5');
             client.publish('demo/home/1709181907/BattenLighting', data);
             client.publish('demo/home/1709181907/TV', data);
             client.publish('demo/home/1709181907/AC', data);
         }else{
-            oldACLight = 0;
+            oldACLight = 7000;
             client.publish('demo/home/1709181907/dimming', '0');
             client.publish('demo/home/1709181907/BattenLighting', data);
             client.publish('demo/home/1709181907/TV', data);

@@ -145,7 +145,11 @@ $(document).ready(function() {
         setText("widget_countup72", data['HR'] / 100);
         setText("widget_countup82", data['TEMP'] / 100);
 
-        setText('AC_Light_State', 'Level '+ parseInt(data['AL'] / 2000));
+        if(parseInt(data['AL'])> 9500){
+            setText('AC_Light_State', 'Level 5');
+        }else{
+            setText('AC_Light_State', 'Level '+ (parseInt(data['AL']) - 7000) / 500);
+        }
         if(data['DL']){
             state('DC_Light_State', 1);
         }else{
@@ -290,8 +294,11 @@ $(document).ready(function() {
         setText("widget_countup52", data['CO2']);
         setText("widget_countup72", data['HR'] / 100);
         setText("widget_countup82", data['TEMP'] / 100);
-
-        setText('AC_Light_State', 'Level '+ parseInt(data['AL'] / 2000));
+        if(parseInt(data['AL'])> 9500){
+            setText('AC_Light_State', 'Level 5');
+        }else{
+            setText('AC_Light_State', 'Level '+ (parseInt(data['AL']) - 7000) / 500);
+        }
         if(data['DL']){
             state('DC_Light_State', 1);
         }else{
